@@ -11,16 +11,16 @@ import { ModeToggle } from '@/components/theme-toggle';
 const NavBar = () => {
     return (
         <nav className='fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-5xl px-4'>
-            <div className='bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-200 hover:bg-white/15 dark:hover:bg-black/15'>
+            <div className='bg-white/10 dark:bg-black/10 backdrop-blur-md border border-amber-500 rounded-full shadow-md shadow-[#f7c46cb6]  dark:shadow-amber-500 transition-all duration-300 hover:bg-white/25 dark:hover:bg-black hover:scale-[1.02]'>
                 <div className='px-6 py-4 flex justify-between items-center'>
-                    <Link href={"/"} className='flex items-center gap-2'>
-                        <Image src={"/logo.png"} alt='LinkCluster' width={42} height={42} />
-                        <span className='font-bold text-2xl tracking-widest text-[#3D6DFF]'>Link Cluster</span>
+                    <Link href={"/"} className='flex items-center gap-1'>
+                        <Image src={"/logo2.png"} alt='LinkCluster' width={42} height={42} />
+                        <span className='font-bold text-2xl tracking-widest text-amber-500'>LinkCluster</span>
                     </Link>
                     <div className='flex items-center gap-4'>
                         <ModeToggle />
                         <SignedIn>
-                            <UserButton showName />
+                            <UserButton/>
                         </SignedIn>
 
                         <SignedOut>

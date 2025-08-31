@@ -19,10 +19,11 @@ const HomeLayout = ({ children }: Props) => {
 
                 <div
                     className="absolute inset-0 -z-10 h-full w-full pointer-events-none
-             dark:bg-[repeating-linear-gradient(45deg,rgba(61,109,255,0.3)_0,rgba(140,82,255,0.3)_1px,transparent_1px,transparent_20px),repeating-linear-gradient(-45deg,rgba(61,109,255,0.3)_0,rgba(140,82,255,0.3)_1px,transparent_1px,transparent_20px)]
-             bg-[repeating-linear-gradient(45deg,rgba(61,109,255,0.15)_0,rgba(140,82,255,0.15)_1px,transparent_1px,transparent_20px),repeating-linear-gradient(-45deg,rgba(61,109,255,0.15)_0,rgba(140,82,255,0.15)_1px,transparent_1px,transparent_20px)]
-             bg-[size:40px_40px]"
+    dark:bg-[repeating-linear-gradient(45deg,rgba(245,158,11,0.3)_0,rgba(245,158,11,0.3)_1px,transparent_1px,transparent_20px),repeating-linear-gradient(-45deg,rgba(245,158,11,0.3)_0,rgba(245,158,11,0.3)_1px,transparent_1px,transparent_20px)]
+    bg-[repeating-linear-gradient(45deg,rgba(245,158,11,0.15)_0,rgba(245,158,11,0.15)_1px,transparent_1px,transparent_20px),repeating-linear-gradient(-45deg,rgba(245,158,11,0.15)_0,rgba(245,158,11,0.15)_1px,transparent_1px,transparent_20px)]
+    bg-[size:40px_40px]"
                 />
+
 
 
 
