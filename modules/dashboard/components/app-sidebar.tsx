@@ -1,6 +1,8 @@
 "use client";
+
 import {
     TreesIcon as Tree,
+    Network,
     BarChart3,
     Settings,
     QrCode,
@@ -28,9 +30,9 @@ import { usePathname } from "next/navigation";
 // Main navigation items
 const mainNavItems = [
     {
-        title: "My Tree",
+        title: "My Cluster",
         url: "/admin/my-tree",
-        icon: Tree,
+        icon: Network,
     },
     {
         title: "Overview",
@@ -70,9 +72,9 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarHeader>
                 <Link href={"/"} className="flex gap-2 items-center justify-start p-4 ">
-                    <Image src={"/logo.svg"} alt="TreeBio Logo" width={32} height={32} />
+                    <Image src={"/logo2.png"} alt="LinkCluster Logo" width={32} height={32} />
                     <h1 className="text-lg font-bold text-zinc-700 dark:text-zinc-100">
-                        TreeBio Admin
+                        LinkCLuster Admin
                     </h1>
                 </Link>
                 <SidebarSeparator />
