@@ -4,7 +4,7 @@ export async function getAvailableUsernameSuggestions(base: string, count = 3, m
     const suggestions: string[] = [];
 
     for (let i = 1; suggestions.length < count && i < maxTries; i++) {
-        const candidate = `${base}${i}`
+        const candidate = `${base}${i}${Math.floor(Math.random()*10)}`
         const exists = await db.user.findUnique({
             where: {
                 username: candidate

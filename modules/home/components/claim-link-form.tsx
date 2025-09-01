@@ -1,76 +1,74 @@
-"use client"
-import React from 'react';
+"use client";
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Check, Link, Loader2 } from "lucide-react";
-import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
-import { checkProfileUsernameAvailability, claimUsername } from '@/modules/profile/actions';
+import { checkProfileUsernameAvailability, claimUsername } from "@/modules/profile/actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const ClaimLinkForm = () => {
-    const router = useRouter();
+  const router = useRouter();
   const [origin, setOrigin] = useState("");
   const [linkValue, setLinkValue] = useState("");
   const [isChecking, setIsChecking] = useState(false);
-  const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
+  const [isAvailable, setIsAvailable] = useState<boolean | null | undefined>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [isClaming, setIsClaiming] = useState(false);
 
-  useEffect(()=>{
-    if(typeof window !== undefined){
-        setOrigin(window.location.origin)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
     }
-  },[])
+  }, []);
 
-  useEffect(()=>{
-    if(linkValue.trim()){
-        const timer = setTimeout(async ()=>{
-            setIsChecking(true)
-            try {
-                const result = await checkProfileUsernameAvailability(linkValue);
-                setIsAvailable(result.available);
-                setSuggestions(result.suggestions || [])
-            } catch (error) {
-                console.log(error)
-            }
-            finally{
-                setIsChecking(false)
-            }
-        })
+  useEffect(() => {
+    if (linkValue.trim()) {
+      const timer = setTimeout(async () => {
+        setIsChecking(true);
+        try {
+          const result = await checkProfileUsernameAvailability(linkValue);
+          setIsAvailable(result.available);
+          setSuggestions(result.suggestions || []);
+        } finally {
+          setIsChecking(false);
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    } else {
+      setIsAvailable(null);
+      setSuggestions([]);
     }
-    else{
-        setIsAvailable(null)
-        setSuggestions([])
-    }
-  },[linkValue])
+  }, [linkValue]);
 
-  const handleSubmit = async(e:React.FormEvent)=>{
+  const handleSubmit = async(e: React.FormEvent) => {
     try {
       e.preventDefault();
-      if(linkValue.trim() && isAvailable){
-        setIsClaiming(true);
-        const result = await claimUsername(linkValue);
-        if(result.success){
-          toast.success("Link claimed successfully")
-          setLinkValue("")
-          router.push("/admin/myTree")
-        }
+    if (linkValue.trim() && isAvailable) {
+      setIsClaiming(true);
+      const result = await claimUsername(linkValue);
+      if(result.success){
+        toast.success("Link claimed successfully!");
+        setLinkValue("");
+        router.push(`/admin`)
       }
+    }
     } catch (error) {
-       console.error("Error claiming link:", error);
+      console.error("Error claiming link:", error);
       toast.error("Failed to claim link. Please try again.");
+      
     }
     finally{
-      setIsClaiming(false)
+      setIsClaiming(false);
     }
-  }
-
-
+    
+   
+  };
 
   const displayOrigin = origin
     ? origin.replace("https://", "").replace("http://", "")
     : "treebio.com";
+
   return (
     <div className="space-y-8 max-w-md mx-auto w-full">
       {/* Form */}
@@ -154,7 +152,7 @@ const ClaimLinkForm = () => {
           }
         </Button>
         <p className="text-xs text-neutral-500 dark:text-neutral-400 text-center w-full">
-          By continuing, you agree to TreeBio's Terms of Service and Privacy
+          By continuing, you agree to LinkCLuster's Terms of Service and Privacy
           Policy.
         </p>
       </form>
@@ -170,7 +168,7 @@ const ClaimLinkForm = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ClaimLinkForm 
+export default ClaimLinkForm;

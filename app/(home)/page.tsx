@@ -2,14 +2,14 @@ import { Button } from '@/components/ui/button'
 import { onBoardUser } from '@/modules/auth/actions'
 import ClaimLinkForm from '@/modules/home/components/claim-link-form'
 
-import { getCurrentUsername } from '@/modules/profile/actions'
+// import { getCurrentUsername } from '@/modules/profile/actions'
 import Link from 'next/link'
 import React from 'react'
 
 
 const HomePage = async () => {
   const user = await onBoardUser();
-  const profile = await getCurrentUsername();
+  // const profile = await getCurrentUsername();
   return (
     <div className='min-h-screen'>
       <main className='text-center space-y-8 py-32'>
@@ -21,12 +21,12 @@ const HomePage = async () => {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Join 70M+ people using TreeBio for their link in bio. One link to
+            Join people using LinkCLuster for their link in bio. One link to
             help you share everything you create, curate and sell from your
             social media profiles.
           </p>
 
-          <div className='pt-4'>
+          {/* <div className='pt-4'>
 
             {
               user.success && profile?.username && (
@@ -39,7 +39,7 @@ const HomePage = async () => {
             }
 
 
-          </div>
+          </div> */}
         </div>
 
         <section className='pb-16 md:pb-24'>
