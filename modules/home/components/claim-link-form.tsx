@@ -144,11 +144,11 @@ const ClaimLinkForm = () => {
         <Button
           type="submit"
           disabled={!linkValue.trim() || !isAvailable || isChecking }
-          className="w-full h-12 text-base font-medium"
+          className="w-full h-12 text-base font-medium transition-all duration-300 hover:bg-neutral-500"
           size="lg"
         >
           {
-            isClaming ? (<Loader2 className="w-4 h-4 animate-spin" />) : "Claim Your TreeBio Link"
+            isClaming ? (<Loader2 className="w-4 h-4 animate-spin" />) : "Claim Your LinkCLuster Link (URL)"
           }
         </Button>
         <p className="text-xs text-neutral-500 dark:text-neutral-400 text-center w-full">
