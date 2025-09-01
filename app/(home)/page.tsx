@@ -46,7 +46,7 @@ const HomePage = async () => {
           <div className='max-w-md mx-auto'>
             <ClaimLinkForm/>
           </div>
-        </section>
+        </section> 
       </main>
     </div>
   )
