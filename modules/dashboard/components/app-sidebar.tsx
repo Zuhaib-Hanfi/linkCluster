@@ -31,7 +31,7 @@ import { usePathname } from "next/navigation";
 const mainNavItems = [
     {
         title: "My Cluster",
-        url: "/admin/my-tree",
+        url: "/admin/my-cluster",
         icon: Network,
     },
     {
