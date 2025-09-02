@@ -13,12 +13,26 @@ model user {
   email    String  @unique
   username String? @unique
 
-  firstName String? 
+  firstName String?
   lastName  String?
   imageUrl  String?
 
   bio String? @db.VarChar(500)
 
+  links Link[]
+
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt 
+  updatedAt DateTime @updatedAt
+}
+
+model Link {
+  id          String   @id @default(cuid())
+  title       String
+  url         String
+  description String?  @db.VarChar(500)
+  clickCount  Int      @default(0)
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        user     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
