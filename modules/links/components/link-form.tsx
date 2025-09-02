@@ -132,7 +132,7 @@ const LinkForm = ({ username, bio, link }: Props) => {
     const onLinkSubmit = async (data: LinkFormData) => {
 
         try {
-            const link = await createLinkByUser(data);
+            const link = await CreateLinkByUser(data);
 
 
             if (link?.data?.id) {
