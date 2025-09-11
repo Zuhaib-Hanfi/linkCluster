@@ -15,10 +15,10 @@ const HomePage = async () => {
     <div className='min-h-screen'>
       <main className='text-center space-y-8 py-32'>
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-zinc-700 dark:text-zinc-100">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-zinc-700 dark:text-zinc-100 text-shadow-2xs text-shadow-amber-500">
             Everything you are.
             <br />
-            <span className="text-[#41B313]">In one simple link.</span>
+            <span className="text-amber-500">In one simple link.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -32,7 +32,7 @@ const HomePage = async () => {
             {
               user.success && profile?.username && (
                 <Link href="/admin/my-cluster">
-                  <Button size="lg" className="px-8 py-3 text-lg font-medium cursor-pointer">
+                  <Button size="lg" className="px-8 py-3 text-lg font-medium cursor-pointer hover:translate-1/2 hover:duration-300 hover:transition-all">
                     TreeBio Dashboard
                   </Button>
                 </Link>

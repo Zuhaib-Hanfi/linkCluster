@@ -15,7 +15,8 @@ const NavBar = () => {
                 <div className='px-6 py-4 flex justify-between items-center'>
                     <Link href={"/"} className='flex items-center gap-1'>
                         <Image src={"/logo2.png"} alt='LinkCluster' width={42} height={42} />
-                        <span className='font-bold text-2xl tracking-widest text-amber-500'>LinkCluster</span>
+                        <span className='font-bold text-2xl tracking-widest text-amber-500 text-shadow-2xs text-shadow-black/10 dark:text-white dark:text-shadow-amber-500'
+                        >LinkCluster</span>
                     </Link>
                     <div className='flex items-center gap-4'>
                         <ModeToggle />
