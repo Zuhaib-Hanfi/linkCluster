@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { getAllLinkForUser } from '@/modules/links/actions'
 import LinkForm from '@/modules/links/components/link-form'
 import { getCurrentUsername } from '@/modules/profile/actions'
 import { profile } from 'console'
@@ -6,8 +7,9 @@ import { Brush, Share } from 'lucide-react'
 
 import React from 'react'
 
-const page = async() => {
+const page = async () => {
   const profile = await getCurrentUsername();
+  const links = await getAllLinkForUser();
   return (
     <section className='flex flex-col gap-6 px-4 py-6'>
       <div className='flex flex-row items-center justify-start w-full'>
@@ -37,6 +39,10 @@ const page = async() => {
           <LinkForm
             username={profile?.username!}
             bio={profile?.bio!}
+            // @ts-ignore
+            link={links.data!}
+            // @ts-ignore
+            socialLinks={profile?.socialLinks!}
           />
         </div>
       </div>

@@ -50,8 +50,11 @@ export const getCurrentUsername = async () => {
             clerkId: user?.id
         },
         select: {
+            firstName:true, 
+            lastName:true,
             username: true,
             bio: true,
+            socialLinks:true
         }
     })
 
