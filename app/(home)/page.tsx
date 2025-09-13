@@ -16,7 +16,7 @@ const HomePage = async () => {
       <main className='text-center space-y-8 py-32'>
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-zinc-700 dark:text-zinc-100 text-shadow-2xs text-shadow-amber-500">
-            Everything you are.
+            All about you.
             <br />
             <span className="text-amber-500">In one simple link.</span>
           </h1>

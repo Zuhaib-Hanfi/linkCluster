@@ -50,11 +50,11 @@ export const getCurrentUsername = async () => {
             clerkId: user?.id
         },
         select: {
-            firstName:true, 
-            lastName:true,
+            firstName: true,
+            lastName: true,
             username: true,
             bio: true,
-            socialLinks:true
+            socialLinks: true
         }
     })
 
@@ -82,4 +82,18 @@ export const createUserProfile = async (data: ProfileFormData) => {
         message: "Profile created successfully",
         data: profile
     }
+}
+
+export const getUserByUsername = async (username: string) => {
+    const currentUser = await db.user.findUnique({
+        where: {
+            username: username
+        },
+        include: {
+            links: true,
+            socialLinks: true
+        }
+    });
+
+    return currentUser;
 }

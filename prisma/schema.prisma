@@ -21,21 +21,26 @@ model user {
 
   links       Link[]
   socialLinks SocialLink[]
-  
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+
+  profileViews ProfileAnalytics[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Link {
-  id          String   @id @default(cuid())
+  id          String  @id @default(cuid())
   title       String
   url         String
-  description String?  @db.VarChar(500)
-  clickCount  Int      @default(0)
-  userId      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  user        user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  description String? @db.VarChar(500)
+  clickCount  Int     @default(0)
+
+  analytics LinkAnalytics[]
+
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model SocialLink {
@@ -44,4 +49,31 @@ model SocialLink {
   url      String
   userId   String
   user     user   @relation(fields: [userId], references: [id])
+}
+
+model LinkAnalytics {
+  id        String   @id @default(cuid())
+  linkId    String
+  clickedAt DateTime
+  clickerIp String   @db.VarChar(45)
+
+  link      Link     @relation(fields: [linkId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([linkId, clickedAt, clickerIp])
+  @@index([clickedAt, linkId])
+}
+
+model ProfileAnalytics {
+  id        String   @id @default(cuid())
+  userId    String
+  visitedAt DateTime
+  visitorIp String   @db.VarChar(45)
+
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([visitedAt, userId])
 }
