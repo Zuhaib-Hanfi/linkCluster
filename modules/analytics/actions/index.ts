@@ -124,16 +124,11 @@ export const getDailyProfileVisits = async (userId: string, days: number = 30) =
     });
 
     // Group by date
-    interface Visit {
-      visitedAt: Date;
-    }
-
-    const dailyVisits = visits.reduce((acc: Record<string, number>, visit: Visit) => {
+    const dailyVisits = visits.reduce((acc, visit) => {
       const date = visit.visitedAt.toISOString().split('T')[0];
       acc[date] = (acc[date] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
-
 
     // Convert to array format for charts
     const chartData = Object.entries(dailyVisits)
@@ -203,8 +198,8 @@ export const getUserAnalytics = async (userId: string) => {
     );
 
     // Most clicked link
-    const mostClickedLink = userLinks.reduce((max, link) =>
-      link.clickCount > (max?.clickCount || 0) ? link : max,
+    const mostClickedLink = userLinks.reduce((max, link) => 
+      link.clickCount > (max?.clickCount || 0) ? link : max, 
       null as typeof userLinks[0] | null
     );
 
@@ -235,11 +230,11 @@ export const logLinkClick = async (linkId: string, clickerIp?: string) => {
     }
 
     const headersList = await headers();
-    let ip = clickerIp ||
-      headersList.get("x-forwarded-for")?.split(",")[0] ||
-      headersList.get("x-real-ip") ||
-      headersList.get("cf-connecting-ip") ||
-      "unknown";
+    let ip = clickerIp || 
+             headersList.get("x-forwarded-for")?.split(",")[0] ||
+             headersList.get("x-real-ip") ||
+             headersList.get("cf-connecting-ip") ||
+             "unknown";
 
     // Normalize the IP
     ip = normalizeIP(ip.trim());
@@ -283,7 +278,7 @@ export const logLinkClick = async (linkId: string, clickerIp?: string) => {
     } catch (fallbackError) {
       console.error("Fallback increment also failed:", fallbackError);
     }
-
+    
     return null;
   }
 };
