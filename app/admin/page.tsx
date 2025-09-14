@@ -6,7 +6,7 @@ import { Brush, Share } from 'lucide-react'
 
 import React from 'react'
 
-const page = async() => {
+const page = async () => {
   const profile = await getCurrentUsername();
   return (
     <section className='flex flex-col gap-6 px-4 py-6'>
@@ -37,6 +37,10 @@ const page = async() => {
           <LinkForm
             username={profile?.username!}
             bio={profile?.bio!}
+            // @ts-ignore
+            link={links.data!}
+            // @ts-ignore
+            socialLinks={profile?.socialLinks!}
           />
         </div>
       </div>

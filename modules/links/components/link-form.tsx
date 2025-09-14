@@ -234,6 +234,7 @@ const LinkForm = ({ username, bio, link, socialLinks: initialSocialLink = [] }: 
 
                 if (result?.success && result?.data) {
                     const newSocialLink: SocialLink = {
+                        // @ts-ignore
                         id: result.data?.id,
                         platform: data.platform,
                         url: data.url,

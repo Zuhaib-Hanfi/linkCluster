@@ -23,8 +23,9 @@ export const logProfileVist = async (userId: string, visitorIp?: string) => {
     },
   });
 
-  if (!recentVisit) {
+   if (!recentVisit) {
     const profileVisit = await db.profileAnalytics.create({
+      // @ts-ignore
       data: {
         visitorIp: ip!,
         userId: userId,
