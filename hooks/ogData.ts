@@ -1,3 +1,4 @@
+
 // hooks/useOGData.ts
 import { useState, useEffect } from 'react';
 
@@ -17,7 +18,7 @@ interface UseOGDataResult {
     error: string | null;
 }
 
-export function useOGData(url: string | null): UseOGDataResult {
+export function useOgData(url: string | null): UseOGDataResult {
     const [data, setData] = useState<OGData | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

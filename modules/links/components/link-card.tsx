@@ -17,7 +17,9 @@ import {
 
 
 import { cn } from "@/lib/utils";
-import { useOGData } from "@/hooks/useOg-Data";
+import { useOgData } from "@/hooks/ogData";
+
+
 
 
 
@@ -39,7 +41,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const { data: ogData, loading, error } = useOGData(link.url);
+  const { data: ogData, loading, error } = useOgData(link.url);
 
   return (
     <Card className="group hover:shadow-md transition-all duration-200 border hover:border-purple-200">
@@ -185,7 +187,7 @@ export const LinkFormWithPreview: React.FC<LinkFormWithPreviewProps> = ({
     defaultValues?.description || ""
   );
 
-  const { data: ogData, loading } = useOGData(url);
+  const { data: ogData, loading } = useOgData(url);
 
   // Auto-fill form fields when OG data is loaded
   React.useEffect(() => {
