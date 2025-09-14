@@ -33,7 +33,7 @@ const HomePage = async () => {
               user.success && profile?.username && (
                 <Link href="/admin/my-cluster">
                   <Button size="lg" className="px-8 py-3 text-lg font-medium cursor-pointer hover:animate-pulse  hover:duration-300 hover:transition-all">
-                    TreeBio Dashboard
+                    LinkCluster Dashboard
                   </Button>
                 </Link>
               )

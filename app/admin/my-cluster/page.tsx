@@ -12,6 +12,7 @@ const page = async () => {
   const links = await getAllLinkForUser();
   return (
     <section className='flex flex-col gap-6 px-4 py-6 '>
+
       <div className='flex flex-row items-center justify-start w-full'>
         <div className='flex flex-row justify-center items-center gap-3'>
           <Button
@@ -31,7 +32,11 @@ const page = async () => {
             Share
           </Button>
         </div>
-
+        <Button
+          variant="outline"
+          size="default"
+          className="fixed top-[10vh] right-[2vw]"
+        >Check your page</Button>
       </div>
 
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-start py-14'>

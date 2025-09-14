@@ -5,20 +5,20 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
-    Instagram,
-    Youtube,
-    Twitter,
-    Github,
-    Linkedin,
-    Globe,
-    ExternalLink,
-    Share,
-    Star,
-    Sun,
-    Moon,
-    ArrowLeft,
-    Copy,
-    CopyCheck,
+  Instagram,
+  Youtube,
+  Twitter,
+  Github,
+  Linkedin,
+  Globe,
+  ExternalLink,
+  Share,
+  Star,
+  Sun,
+  Moon,
+  ArrowLeft,
+  Copy,
+  CopyCheck,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -26,79 +26,79 @@ import { logLinkClick } from "@/modules/analytics/actions";
 
 
 interface LinkItem {
-    id: string;
-    title: string;
-    url: string;
-    description?: string;
-    clickCount: number;
-    userId: string;
-    createdAt: string;
-    updatedAt: string;
+  id: string;
+  title: string;
+  url: string;
+  description?: string;
+  clickCount: number;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface SocialLinkItem {
-    id: string;
-    platform: string;
-    url: string;
-    userId: string;
-    createdAt: string;
-    updatedAt: string;
+  id: string;
+  platform: string;
+  url: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface ProfileData {
-    id: string;
-    clerkId: string;
-    email: string;
-    username: string;
-    firstName: string;
-    lastName: string;
-    imageUrl: string;
-    bio: string;
-    createdAt: string;
-    updatedAt: string;
-    links: LinkItem[];
-    socialLinks: SocialLinkItem[];
+  id: string;
+  clerkId: string;
+  email: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  imageUrl: string;
+  bio: string;
+  createdAt: string;
+  updatedAt: string;
+  links: LinkItem[];
+  socialLinks: SocialLinkItem[];
 }
 
 
 interface LinkClusterProfileProps {
-    profileData?: ProfileData
+  profileData?: ProfileData
 }
 
 
 const getSocialIcon = (platform: string) => {
-    switch (platform.toLowerCase()) {
-        case "instagram":
-            return <Instagram className="h-15 w-15" />;
-        case "youtube":
-            return <Youtube className="h-15 w-15" />;
-        case "twitter":
-            return <Twitter className="h-15 w-15" />;
-        case "github":
-            return <Github className="h-15 w-15" />;
-        case "linkedin":
-            return <Linkedin className="h-15 w-15" />;
-        default:
-            return <Globe className="h-15 w-15" />;
-    }
+  switch (platform.toLowerCase()) {
+    case "instagram":
+      return <Instagram className="h-15 w-15" />;
+    case "youtube":
+      return <Youtube className="h-15 w-15" />;
+    case "twitter":
+      return <Twitter className="h-15 w-15" />;
+    case "github":
+      return <Github className="h-15 w-15" />;
+    case "linkedin":
+      return <Linkedin className="h-15 w-15" />;
+    default:
+      return <Globe className="h-15 w-15" />;
+  }
 };
 
 const LinkClusterProfile = ({ profileData }: LinkClusterProfileProps) => {
-    const router = useRouter();
-    const [isCopied, setIsCopied] = React.useState(false);
-    const [linkClicks, setLinkClicks] = React.useState<{ [key: string]: number }>({});
-    const { theme, setTheme } = useTheme();
-    const origin = typeof window !== "undefined" ? window.location.origin : "";
+  const router = useRouter();
+  const [isCopied, setIsCopied] = React.useState(false);
+  const [linkClicks, setLinkClicks] = React.useState<{ [key: string]: number }>({});
+  const { theme, setTheme } = useTheme();
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
 
-    const onCopy = () => {
-        if (profileData) {
-            navigator.clipboard.writeText(`${origin}/${profileData.username}`)
-            setIsCopied(true);
-            setTimeout(() => setIsCopied(false), 2000);
-        }
+  const onCopy = () => {
+    if (profileData) {
+      navigator.clipboard.writeText(`${origin}/${profileData.username}`)
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     }
+  }
 
-      React.useEffect(() => {
+  React.useEffect(() => {
     if (profileData?.links) {
       const initialClicks = profileData.links.reduce((acc, link) => {
         acc[link.id] = link.clickCount;
@@ -109,7 +109,7 @@ const LinkClusterProfile = ({ profileData }: LinkClusterProfileProps) => {
   }, [profileData?.links]);
 
 
-      if (!profileData) {
+  if (!profileData) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-zinc-900 dark:bg-zinc-900">
         <div className="text-center py-8 text-zinc-400 dark:text-zinc-400">
@@ -119,30 +119,31 @@ const LinkClusterProfile = ({ profileData }: LinkClusterProfileProps) => {
     );
   }
 
-  const handleLinkClick = async (linkId:string)=>{
+  const handleLinkClick = async (linkId: string) => {
     try {
       await logLinkClick(linkId);
-        setLinkClicks(prev =>({
-             ...prev,
+      setLinkClicks(prev => ({
+        ...prev,
         [linkId]: (prev[linkId] || 0) + 1
-        }))
+      }))
     } catch (error) {
-         console.error("Failed to log link click:", error);
+      console.error("Failed to log link click:", error);
     }
   }
 
-return (
-           <div
-      className={`flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8 transition-colors duration-300 ${theme === "dark" ? "bg-zinc-900" : "bg-gray-50"
-        }`}
+  return (
+    <div
+      className={`flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8 transition-colors duration-300 ${theme === "dark" ? "bg-[repeating-linear-gradient(45deg,rgba(245,158,11,0.3)_0,rgba(245,158,11,0.3)_1px,transparent_1px,transparent_20px),repeating-linear-gradient(-45deg,rgba(245,158,11,0.3)_0,rgba(245,158,11,0.3)_1px,transparent_1px,transparent_20px)]" : "bg-[repeating-linear-gradient(45deg,rgba(245,158,11,0.15)_0,rgba(245,158,11,0.15)_1px,transparent_1px,transparent_20px),repeating-linear-gradient(-45deg,rgba(245,158,11,0.15)_0,rgba(245,158,11,0.15)_1px,transparent_1px,transparent_20px)]"
+        } bg-[size:40px_40px]` }
     >
+   
       {/* Back button */}
       <Button
         variant="outline"
         className={`absolute top-4 left-4 h-10 w-10 rounded-md transition-all duration-200 ${theme === "dark"
           ? "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-700/50"
           : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/50"
-          }`}
+          } shadow-xs shadow-zinc-500 dark:shadow-amber-500 hover:translate-1`}
         onClick={() => router.back()}
         aria-label="Go back"
       >
@@ -152,18 +153,15 @@ return (
       {/* Main Profile Card */}
       <div className="w-full max-w-md">
         <Card
-          className={`backdrop-blur-sm rounded-2xl shadow-2xl p-8 relative overflow-hidden transition-all duration-300 ${theme === "dark"
-            ? "bg-zinc-800/90 border-zinc-700/50"
-            : "bg-white/90 border-gray-200/50"
-            }`}
+          className={`backdrop-blur-xs rounded-4xl shadow-xs shadow-zinc-500 dark:shadow-amber-500 p-8 relative overflow-hidden transition-all duration-300 bg-transparent border-0 hover:scale-[1.03] `}
         >
           {/* Background gradient overlay */}
-          <div
+          {/* <div
             className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${theme === "dark"
               ? "bg-gradient-to-br from-zinc-800/20 via-transparent to-zinc-900/20"
               : "bg-gradient-to-br from-gray-50/20 via-transparent to-gray-100/20"
               }`}
-          />
+          /> */}
 
           {/* Header with theme toggle and share */}
           <div className="flex justify-between items-center mb-8 relative z-10">
@@ -173,7 +171,7 @@ return (
               className={`h-9 w-9 rounded-xl transition-all duration-200 ${theme === "dark"
                 ? "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-700/50"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/50"
-                }`}
+                } `}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               aria-label="Toggle theme"
             >
@@ -390,7 +388,7 @@ return (
         />
       </div>
     </div>
-    )
+  )
 }
 
 export default LinkClusterProfile
