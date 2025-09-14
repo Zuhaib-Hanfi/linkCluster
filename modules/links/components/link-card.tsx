@@ -17,7 +17,7 @@ import {
 
 
 import { cn } from "@/lib/utils";
-import { useOGData } from "@/hooks/useOGData";
+import { useOGData } from "@/hooks/useOgData";
 
 
 
