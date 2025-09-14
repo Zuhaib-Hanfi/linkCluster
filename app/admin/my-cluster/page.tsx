@@ -4,6 +4,7 @@ import LinkForm from '@/modules/links/components/link-form'
 import { getCurrentUsername } from '@/modules/profile/actions'
 import { profile } from 'console'
 import { Brush, Share } from 'lucide-react'
+import Link from 'next/link'
 
 import React from 'react'
 
@@ -31,15 +32,14 @@ const page = async () => {
             <Share size={16} />
             Share
           </Button>
+
+
         </div>
-        <Button
-          variant="outline"
-          size="default"
-          className="fixed top-[10vh] right-[2vw]"
-        >Check your page</Button>
+
       </div>
 
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-start py-14'>
+
         <div className='order-2 lg:order-1 border-r p-4'>
           <LinkForm
             username={profile?.username!}
@@ -50,8 +50,17 @@ const page = async () => {
             socialLinks={profile?.socialLinks!}
           />
         </div>
+        <div className='order-1 lg:order-1 border-r p-4 flex justify-center items-center'>
+          <Link href={`/${profile?.username}`}>
+            <Button
+              variant="outline"
+              size="default"
+              className=" shadow-xs shadow-green-500"
+            >Preview</Button>
+          </Link>
+        </div>
       </div>
-    </section>
+    </section >
   )
 }
 

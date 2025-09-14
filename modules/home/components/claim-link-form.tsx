@@ -67,7 +67,7 @@ const ClaimLinkForm = () => {
 
   const displayOrigin = origin
     ? origin.replace("https://", "").replace("http://", "")
-    : "treebio.com";
+    : "linkcluster.com";
 
   return (
     <div className="space-y-8 max-w-md mx-auto w-full">
