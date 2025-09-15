@@ -38,7 +38,7 @@ const NavBar = () => {
                                 <SignUpButton>
                                     <Button
                                         size="sm"
-                                        className="text-sm font-medium bg-[#41B313] hover:bg-[#369611] text-white"
+                                        className="text-sm font-medium bg-amber-500 hover:bg-amber-600 text-white"
                                     >
                                         Sign Up
                                     </Button>

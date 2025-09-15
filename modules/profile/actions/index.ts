@@ -44,7 +44,7 @@ export const claimUsername = async (username: string) => {
 
 export const getCurrentUsername = async () => {
     const user = await currentUser();
-
+    if (!user) return;
     const currentUsername = await db.user.findUnique({
         where: {
             clerkId: user?.id
