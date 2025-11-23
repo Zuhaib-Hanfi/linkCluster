@@ -6,12 +6,12 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600 dark:text-zinc-300 px-4">
                 {/* Left side */}
                 <p className="text-center md:text-left">
-                    © {new Date().getFullYear()} Hanfi. All rights reserved.
+                    © {new Date().getFullYear()} Hanfi & Rahul. All rights reserved.
                 </p>
 
                 {/* Center */}
                 <p className="text-center">
-                    Built by <span className="font-semibold">Hanfi</span> <br className="md:hidden" />
+                    Built by <span className="font-semibold">Hanfi & Rahul</span> <br className="md:hidden" />
                     with guidance from{" "}
                     <span className="font-semibold">Rohit Negi</span> &{" "}
                     <span className="font-semibold">Suraj Jha</span>
